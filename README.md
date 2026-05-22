@@ -1,25 +1,19 @@
-## AWS Amplify React+Vite Starter Template
+# Front de gestion de lightsail de cicd
 
-This repository provides a starter template for creating applications using React+Vite and AWS Amplify, emphasizing easy setup for authentication, API, and database capabilities.
+# Description
+Cet outil permet de gérer voir l'état et de gérer les lightsails déployé dans le cas de la cicd d'un projet.
 
-## Overview
+# Secret
+Plusieurs secrets sont attendus.
 
-This template equips you with a foundational React application integrated with AWS Amplify, streamlined for scalability and performance. It is ideal for developers looking to jumpstart their project with pre-configured AWS services like Cognito, AppSync, and DynamoDB.
+- PROJECT_TAG : le tag à utiliser pour identifier les lightsails concernés
+- PROJECT_ACCESS_KEY_ID : id de l'utilisateur iam associé au projet
+- PROJECT_SECRET_ACCESS_KEY : secret de l'utilisateur iam associé au projet
+- PROJECT_SCHEDULER_GROUP : nom du groupe des scheduler
 
-## Features
+# en dev :
+Penser à ajouter les secrets à la sandbox
 
-- **Authentication**: Setup with Amazon Cognito for secure user authentication.
-- **API**: Ready-to-use GraphQL endpoint with AWS AppSync.
-- **Database**: Real-time database powered by Amazon DynamoDB.
-
-## Deploying to AWS
-
-For detailed instructions on deploying your application, refer to the [deployment section](https://docs.amplify.aws/react/start/quickstart/#deploy-a-fullstack-app-to-aws) of our documentation.
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
+ npx ampx sandbox secret set PROJECT_TAG
+ npx ampx sandbox secret set PROJECT_ACCESS_KEY_ID
+ npx ampx sandbox secret set PROJECT_SECRET_ACCESS_KEY

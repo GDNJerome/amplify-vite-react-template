@@ -1,4 +1,7 @@
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
+import { sayHello } from "../functions/say-hello/resource"
+import { getAllLightsails } from "../functions/get-all-lightsails/resource"
+import { getSchedulers } from "../functions/get-schedulers/resource"
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -7,11 +10,48 @@ specifies that any user authenticated via an API key can "create", "read",
 "update", and "delete" any "Todo" records.
 =========================================================================*/
 const schema = a.schema({
-  Todo: a
-    .model({
-      content: a.string(),
-    })
-    .authorization((allow) => [allow.publicApiKey()]),
+
+  sayHello: a
+      .query()
+      .arguments({
+        name: a.string(),
+      })
+      .returns(a.string())
+      .authorization(allow => [allow.authenticated()])
+      .handler(a.handler.function(sayHello)),
+
+  LightsailInstance: a.customType({
+    name: a.string(),
+    arn: a.string(),
+    createdAt: a.string(),
+    isStaticIp: a.boolean(),
+    privateIpAddress: a.string(),
+    publicIpAddress: a.string(),
+    ipv6Addresses: a.string().array(),
+    ipAddressType: a.string(),
+    state: a.string(),
+  }),
+
+  getAllLightsails: a
+      .query()
+      .returns(a.ref('LightsailInstance').array())
+      .authorization(allow => [allow.authenticated()])
+      .handler(a.handler.function(getAllLightsails)),
+
+  Scheduler: a.customType({
+    CreationDate: a.string(),
+    LastModificationDate: a.string(),
+    Name: a.string(),
+    State: a.string(),
+    DeleteDate: a.string(),
+  }),
+
+  getSchedulers: a
+      .query()
+      .returns(a.ref('Scheduler').array())
+      .authorization(allow => [allow.authenticated()])
+      .handler(a.handler.function(getSchedulers)),
+
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -19,7 +59,7 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: "apiKey",
+    defaultAuthorizationMode: "userPool",
     // API Key is used for a.allow.public() rules
     apiKeyAuthorizationMode: {
       expiresInDays: 30,

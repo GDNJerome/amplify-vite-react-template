@@ -1,0 +1,140 @@
+{
+  "auth": {
+    "user_pool_id": "eu-west-3_qx7DSDEFv",
+    "aws_region": "eu-west-3",
+    "user_pool_client_id": "6rcv2bq313e1bd914l3vca55nd",
+    "identity_pool_id": "eu-west-3:d0116b8f-7192-47f7-ab70-33b99522d5f2",
+    "mfa_methods": [],
+    "standard_required_attributes": [
+      "email"
+    ],
+    "username_attributes": [
+      "email"
+    ],
+    "user_verification_types": [
+      "email"
+    ],
+    "groups": [],
+    "mfa_configuration": "NONE",
+    "password_policy": {
+      "min_length": 8,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "require_symbols": true,
+      "require_uppercase": true
+    },
+    "unauthenticated_identities_enabled": true
+  },
+  "data": {
+    "url": "https://fty7mnq6kzcftjszzqagiwudxq.appsync-api.eu-west-3.amazonaws.com/graphql",
+    "aws_region": "eu-west-3",
+    "api_key": "da2-kdg6ycqmazftdonyvm7flgdphu",
+    "default_authorization_type": "AMAZON_COGNITO_USER_POOLS",
+    "authorization_types": [
+      "API_KEY",
+      "AWS_IAM"
+    ],
+    "model_introspection": {
+      "version": 1,
+      "models": {},
+      "enums": {},
+      "nonModels": {
+        "LightsailInstance": {
+          "name": "LightsailInstance",
+          "fields": {
+            "name": {
+              "name": "name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "arn": {
+              "name": "arn",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "createdAt": {
+              "name": "createdAt",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "isStaticIp": {
+              "name": "isStaticIp",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": false,
+              "attributes": []
+            },
+            "privateIpAddress": {
+              "name": "privateIpAddress",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "publicIpAddress": {
+              "name": "publicIpAddress",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "ipv6Addresses": {
+              "name": "ipv6Addresses",
+              "isArray": true,
+              "type": "String",
+              "isRequired": false,
+              "attributes": [],
+              "isArrayNullable": true
+            },
+            "ipAddressType": {
+              "name": "ipAddressType",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "state": {
+              "name": "state",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        }
+      },
+      "queries": {
+        "sayHello": {
+          "name": "sayHello",
+          "isArray": false,
+          "type": "String",
+          "isRequired": false,
+          "arguments": {
+            "name": {
+              "name": "name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        },
+        "getAllLightsails": {
+          "name": "getAllLightsails",
+          "isArray": true,
+          "type": {
+            "nonModel": "LightsailInstance"
+          },
+          "isRequired": false,
+          "isArrayNullable": true
+        }
+      }
+    }
+  },
+  "version": "1.4"
+}

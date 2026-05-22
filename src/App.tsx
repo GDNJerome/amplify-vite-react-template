@@ -42,6 +42,8 @@ function App() {
 
     async function getSchedulers() : Promise<Scheduler[]> {
         const { data } = await client.queries.getSchedulers();
+
+        console.log(data);
         return (data ?? []).filter((i): i is Scheduler => i !== null);
     }
 
@@ -51,10 +53,10 @@ function App() {
         getSchedulers().then(setSchedulers);
     }, []);
 
-    const deleteDateByName = useMemo(() => {
+    const deleteDateByProject = useMemo(() => {
         const map = new Map<string, string>();
         for (const s of schedulers) {
-            if (s.Name && s.DeleteDate) map.set(s.Name, s.DeleteDate);
+            if (s.Project && s.DeleteDate) map.set(s.Project, s.DeleteDate);
         }
         return map;
     }, [schedulers]);
@@ -85,7 +87,7 @@ function App() {
                         <TableCell>{ls.publicIpAddress ?? "no public ip"}</TableCell>
                         <TableCell>{ls.state ?? "unknown"}</TableCell>
                         <TableCell>{formatDate(ls.createdAt)}</TableCell>
-                        <TableCell>{formatDate(ls.name ? deleteDateByName.get(ls.name) : undefined)}</TableCell>
+                        <TableCell>{formatDate(ls.name ? deleteDateByProject.get(ls.name) : undefined)}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>

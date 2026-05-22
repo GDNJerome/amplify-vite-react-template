@@ -30,6 +30,10 @@ const schema = a.schema({
     ipv6Addresses: a.string().array(),
     ipAddressType: a.string(),
     state: a.string(),
+    ramSize: a.float(),
+    cpu: a.integer(),
+    diskSize: a.integer(),
+    username: a.string(),
   }),
 
   getAllLightsails: a
@@ -44,6 +48,7 @@ const schema = a.schema({
     Name: a.string(),
     State: a.string(),
     DeleteDate: a.string(),
+    Project: a.string(),
   }),
 
   getSchedulers: a

@@ -3,10 +3,12 @@
 # context
 - read : @.ai/_shared/spec-context.md
 
-# Current plan version is V1
+# Current plan version is V2
 
 # Version control
-# V1
+## V2
+- change in key used from "get-schedulers" / "GetSchedulers" to identify the corresponding lightsail
+## V1
 - initial version
 
 # scope
@@ -31,6 +33,16 @@
     - hint :  a "lightsails" may not have a "scheduler", in this case display "--" 
   
 ## hint
-- "get-schedulers" / "GetSchedulers" expose the property "Name", this map to the property "name" of lambda "get-all-lightsails" / "GetAllLightsails"
-    - this property has to be used to link both array of object
-    - a "lightsails" may not have a "scheduler"
+- "get-schedulers" / "GetSchedulers" expose the property "Project", this map to the property "name" of lambda "get-all-lightsails" / "GetAllLightsails"
+  - @since V2, "Project" replace the previous "Name" property
+- this property has to be used to link both array of object
+  - a "lightsails" may not have a "scheduler"
+
+# Human only
+** Section only used by human** -> skip, including subsection **don't read**
+
+liste les schedulers d'un groupe 
+aws scheduler list-schedules --group-name Gdn_CICD_Destroy_gdnintranet --profile AdministratorAccessCICDAmplify
+
+info sur un scheduler
+aws cli scheduler

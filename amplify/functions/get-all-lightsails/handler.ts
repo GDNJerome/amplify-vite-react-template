@@ -26,5 +26,9 @@ export const handler: Schema["getAllLightsails"]["functionHandler"] = async () =
         ipv6Addresses: i.ipv6Addresses ?? [],
         ipAddressType: i.ipAddressType ?? null,
         state: i.state?.name ?? null,
+        ramSize: i.hardware?.ramSizeInGb ?? null,
+        cpu: i.hardware?.cpuCount ?? null,
+        diskSize: i.hardware?.disks?.[0]?.sizeInGb ?? null,
+        username: i.username ?? null,
       }))
 }

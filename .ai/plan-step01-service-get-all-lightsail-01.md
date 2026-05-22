@@ -6,10 +6,12 @@
 # Current plan version is V2
 
 # Version control
+## V3
+- add more informations about the lightsail
 ## V2
 - env.TAG changed to env.PROJECT_TAG
 - credential changed to use secret PROJECT_ACCESS_KEY_ID and PROJECT_SECRET_ACCESS_KEY
-# V1
+## V1
 - initial version
 
 # scope
@@ -43,6 +45,15 @@
   - publicIpAddress
   - ipv6Addresses
   - ipAddressType
+  - "ramSize" matching value of hardware.ramSizeInGb
+    - @since V3
+  - "cpu" matching value of hardware.cpuCount
+    - @since V3
+  - "diskSize" matching value of hardware.disks[0].sizeInGb
+    - @since V3
+    - hint : there will always be a single disk therefore harware.disks.count == 1, always
+  - username
+    - @since V3
 
 ## credential
  - @since V2 : will use specific credential
@@ -54,3 +65,12 @@
 ## hint for "PROJECT_TAG"
 - env.PROJECT_TAG will be a secret and not a simple environnement variable
   - @since V2 : will use the name PROJECT_TAG instead of TAG
+
+# Human only
+** Section only used by human** -> skip, including subsection, **don't read**
+
+lister les lightsail en cli correspondant à un tag
+aws lightsail get-instances --query "instances[?tags[?key == 'GDN::Previsionnel::Lightsail']]"  --profile AdministratorAccessCICDAmplify
+
+information sur un serveur
+aws lightsail get-instance --instance-name Gdn-GdnIntranet-staging --profile AdministratorAccessCICDAmplify

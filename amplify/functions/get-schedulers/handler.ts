@@ -50,6 +50,16 @@ function extractDeleteDate(expr: string | undefined, tz: string | undefined): st
   return naiveToISO(match[1], tz)
 }
 
+function extractProject(input: string | undefined): string | null {
+  if (!input) return null
+  try {
+    const parsed = JSON.parse(input) as { project?: unknown }
+    return typeof parsed.project === "string" ? parsed.project : null
+  } catch {
+    return null
+  }
+}
+
 export const handler: Schema["getSchedulers"]["functionHandler"] = async () => {
   const groupName = env.PROJECT_SCHEDULER_GROUP
 
@@ -68,6 +78,7 @@ export const handler: Schema["getSchedulers"]["functionHandler"] = async () => {
           Name: s.Name ?? null,
           State: s.State ?? null,
           DeleteDate: extractDeleteDate(detail.ScheduleExpression, detail.ScheduleExpressionTimezone),
+          Project: extractProject(detail.Target?.Input),
         }
       })
   )

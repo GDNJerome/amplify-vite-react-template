@@ -105,6 +105,81 @@
               "type": "String",
               "isRequired": false,
               "attributes": []
+            },
+            "ramSize": {
+              "name": "ramSize",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "cpu": {
+              "name": "cpu",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": false,
+              "attributes": []
+            },
+            "diskSize": {
+              "name": "diskSize",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": false,
+              "attributes": []
+            },
+            "username": {
+              "name": "username",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "Scheduler": {
+          "name": "Scheduler",
+          "fields": {
+            "CreationDate": {
+              "name": "CreationDate",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "LastModificationDate": {
+              "name": "LastModificationDate",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "Name": {
+              "name": "Name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "State": {
+              "name": "State",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "DeleteDate": {
+              "name": "DeleteDate",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "Project": {
+              "name": "Project",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
             }
           }
         }
@@ -129,6 +204,15 @@
           "isArray": true,
           "type": {
             "nonModel": "LightsailInstance"
+          },
+          "isRequired": false,
+          "isArrayNullable": true
+        },
+        "getSchedulers": {
+          "name": "getSchedulers",
+          "isArray": true,
+          "type": {
+            "nonModel": "Scheduler"
           },
           "isRequired": false,
           "isArrayNullable": true

@@ -10,7 +10,7 @@
 # Version control
 ## V2
 - replaced html ul/li with react comopent Table
-# V1
+## V1
 - initial version
 
 # scope
@@ -66,4 +66,3 @@
   </TableBody>
 </Table>
 ```
-

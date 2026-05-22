@@ -3,10 +3,12 @@
 # context
 - read : @.ai/_shared/spec-context.md
 
-# Current plan version is V1
+# Current plan version is V2
 
 # Version control
-# V1
+## V2
+- added value "Project" into result
+## V1
 - initial version
 
 # scope
@@ -47,7 +49,8 @@
       - "ScheduleExpression" : "at(2026-05-21T14:10:22)" 
       - "ScheduleExpressionTimezone": "UTC"
         - expect date value after conversion : "2026-05-21T14:10:22000+02:00"
-
+  - Project : taken from property "Target"->"Input"_>"project"
+    - @since V2
 
 ## credential
  - project has an already iam user assigned with specific limitations right
@@ -104,7 +107,10 @@
 ```
 
 # Human only
-** Section only used by human** -> skip, don't read
+** Section only used by human** -> skip, including subsection **don't read**
+
+lister tout les scheduler d'un groupe 
+aws scheduler list-schedules --group-name Gdn_CICD_Destroy_gdnintranet --profile AdministratorAccessCICDAmplify
 
 info sur un scheduler
 aws scheduler get-schedule --name Gdn-GdnIntranet-gi2-rbac-1779372622 --group-name Gdn_CICD_Destroy_gdnintranet --profile AdministratorAccessCICDAmplify
